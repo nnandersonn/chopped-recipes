@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">
+     
+     <title>Chopped Recipes</title>
+ </head>
+ <body>
+    <section id="outer-border" class="black-border">
+        <header class="red-border">Chopped Recipes</header>
+        <section id="main-section">         
+            <div class="flip-card">
+                <div class="flip-card-inner" >
+                
+                    <div class="flip-card-front" >
+                        <div class="front-title" >
+                            Title
+                        </div>
+                        <div class="front-left">
+                            <button id="get-recipes">Get Recipes</button>
+                            <section id="front-recipe-list-section"></section>
+                        </div>
+                        <div class="front-right">
+                            <button id="add-recipe-button">Add Recipe</button>
+                            
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="back-title">
+                            <div class="back-top-spacer"></div>
+                            <div class="back-title-div" id="back-title">Title</div>
+                            <div class="back-top-spacer">
+                                <button id="back-exit-button">X</button>
+                            </div>
+                        </div>
+                        <div class="back-left" id="back-ingredients">
+                            left
+                        </div>
+                        <div class="back-right" id="back-instructions">
+                            right
+                        </div>
+                        <div class="back-bottom">
+                            <div id="edit-recipe-section"></div>
+                            <div id="submit-recipe-section"></div>
+                            <div id="delete-recipe-section"></div>
+                        </div>
+                    </div>
+                   
+                    
+                    
+                </div>
+            </div>
+        </section>
+        <footer>This is my footer</footer>
+    </section>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <script src="main.js"></script>
+ </body>
+ </html>
