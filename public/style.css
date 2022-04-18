@@ -225,6 +225,7 @@ textarea, input{
     width: 30%;
     border-right: #bb2e4b solid thin;
     height: 90%;
+    padding: 15px;
 }
 .front-right{
     box-sizing: border-box;

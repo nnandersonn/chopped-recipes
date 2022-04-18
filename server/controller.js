@@ -3,8 +3,8 @@ require('dotenv').config()
 const {DATABASE_URL} = process.env
 
 // const { default: axios } = require("axios")
-const exp = require('constants')
-const { builtinModules } = require('module')
+// const exp = require('constants')
+// const { builtinModules } = require('module')
 const Sequelize = require('sequelize')
 
 
