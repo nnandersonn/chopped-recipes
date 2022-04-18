@@ -4,7 +4,7 @@
 console.log('js connected')
 
 
-const  getRecipeButton = document.getElementById('get-recipes')
+const getRecipeButton = document.getElementById('get-recipes')
 const backExitButton = document.getElementById('back-exit-button')
 const flipCardInner = document.querySelector('.flip-card-inner')
 const frontRecipeListSection = document.getElementById('front-recipe-list-section')
@@ -16,8 +16,6 @@ const instructionSection = document.getElementById('back-instructions')
 const editButtonSection = document.getElementById('edit-recipe-section')
 const submitRecipeSection = document.getElementById('submit-recipe-section')
 const deleteButtonSection = document.getElementById('delete-recipe-section')
-
-// let allRecipes = null
 
 
 
@@ -34,6 +32,7 @@ const deleteRecipe = (recipe_id) =>{
 }
 
 const editRecipe = (recipe_id, recipe_title, ingredients, instructions ) => {
+// const editRecipe = (recipe_id, recipe_title, ingredients, instructions ) => {
     flipCard360()
     editButtonSection.innerHTML = ''
     deleteButtonSection.innerHTML = ''
@@ -41,9 +40,9 @@ const editRecipe = (recipe_id, recipe_title, ingredients, instructions ) => {
     const makeChangesButton = document.getElementById('make-changes-button')
 
 
-    mainCardTitle.innerHTML = `<input type="text" id="edited-title" value="${recipe_title}">`
-    ingredientSection.innerHTML =`<textarea id="edited-ingredients">${ingredients}</textarea>`
-    instructionSection.innerHTML =`<textarea id="edited-instructions">${instructions}</textarea>`
+    mainCardTitle.innerHTML = `<input type="text" id="edited-title" value="${recipe_title}" required>`
+    ingredientSection.innerHTML =`<textarea id="edited-ingredients">${ingredients}</textarea required>`
+    instructionSection.innerHTML =`<textarea id="edited-instructions">${instructions}</textarea required>`
 
 
     makeChangesButton.addEventListener('click', ()=>{
@@ -62,8 +61,8 @@ const displayRecipe = (recipe) =>{
     console.log('This is my recipe', recipe)
     editButtonSection.innerHTML = `<button onclick="editRecipe('${recipe_id}', '${recipe_title}', '${ingredients}', '${instructions}')">Edit Recipe</button>`
     deleteButtonSection.innerHTML = `<button onclick="deleteRecipe('${recipe_id}')">Delete Recipe</button>`
-    ingredients = ingredients.split(',').join(`<br>`)
-    instructions = instructions.split(',').join(`<br>`)
+    ingredients = ingredients.split(';').join(`<br>`)
+    instructions = instructions.split(';').join(`<br>`)
     
     mainCardTitle.innerHTML = `<p>${recipe_title}</p>`
     ingredientSection.innerHTML = `<p>${ingredients}</p>`
@@ -85,9 +84,9 @@ const createTitleButton = (arr) => {
 }
 
 const displayInputField = () => {
-    mainCardTitle.innerHTML = '<input type="text" placeholder="Enter title here" id="title-input">'
-    ingredientSection.innerHTML ='<textarea placeholder="Enter Ingredients here" id="ingredient-textarea"></textarea>'
-    instructionSection.innerHTML ='<input type="text" placeholder="enter instructions here" id="instruction-input"> '
+    mainCardTitle.innerHTML = '<input type="text" placeholder="Enter title here..." id="title-input" required>'
+    ingredientSection.innerHTML ='<textarea placeholder="Enter Ingredients here" id="ingredient-textarea" required></textarea>'
+    instructionSection.innerHTML ='<textarea placeholder="Enter Instructions here" id="instruction-textarea" required></textarea>'
     flipCard()
     submitRecipeSection.innerHTML = '<button id="submit-recipe-button">Submit Recipe</button>'
 
@@ -95,8 +94,8 @@ const displayInputField = () => {
 
     submitRecipeButton.addEventListener('click', ()=> {
         const inputTitle = document.getElementById('title-input').value
-        const inputIngredients = document.getElementById('ingredient-input').value
-        const inputInstructions = document.getElementById('instruction-input').value
+        const inputIngredients = document.getElementById('ingredient-textarea').value
+        const inputInstructions = document.getElementById('instruction-textarea').value
         console.log(inputTitle, inputIngredients, inputInstructions)
         const newRecipe = {title: inputTitle, ingredients: inputIngredients, instructions: inputInstructions}
 

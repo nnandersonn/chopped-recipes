@@ -52,6 +52,20 @@ body {
     width: 100vw;
     padding: 0px; 
     margin: 0px;
+    font-family: 'Cutive Mono', monospace;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    background-color: #32353d;
+}
+
+
+button {
+    font-family: 'Cutive Mono', monospace;
+    font-size: large;
+    border: none;
+    border: #13a7be solid thin;
+    background-color: transparent;
 
 }
 
@@ -62,6 +76,8 @@ body {
     align-items: center;
     padding-top: 15px;
     height: 95vh; 
+    min-width: 800px;
+    width: 70%;
     
 }
 
@@ -73,54 +89,76 @@ header {
     font-size:xx-large;
     justify-content: center; 
     align-items: center;
+    background-image: url("/textures/grey-paper-texture.jpg");
 }
 
 footer{
-    background-color: black;
+   
     color: white;
     width: 100%;
     height: 50px;
     margin-top: 15px;
-    margin-bottom: 0px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+ 
     padding-top: 10px;
     text-align: center;
 }
 
-textarea{
-    width: 80%;
-    height: 80%;
+input{
+    text-align: center;
+    height: 75%;
 }
 
+textarea {
+    height: 100%;
+}
+
+textarea, input{
+    font-family: 'Cutive Mono', monospace;
+    font-size: x-large;
+    box-sizing: border-box;
+    padding: 15px;
+    width: 100%;
+    border: #13a7be solid thin;
+    border-radius: 5px;
+    resize: none;
+    background-color: transparent;
+    
+}
+
+#outer-border {
+    background-color: transparent;
+}
+
+#main-section {
+    box-sizing: border-box;
+    display: flex;
+    /* border: solid; */
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
 
 .flip-card{
     box-sizing: border-box;
     background-color: transparent;
     display: flex;
-    width: 60%;
+    width: 100%;
     justify-content: center;
     align-items: center;
     perspective: 1800px;
+   
 }
 
 .flip-card-inner{
     box-sizing: border-box;
     position: relative;
     width: 80%;
-    height: 80%;
+    height: 100%;
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-}
-
-
-
-/* .flip-card:hover .flip-card-inner{
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
     
-} */
+}
 
 .flip{
     transform: rotateY(180deg);
@@ -138,14 +176,29 @@ textarea{
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    box-shadow: 1px 1px 15px;
+    background-image: url("/textures/grey-paper-texture.jpg");
 }
 
 .flip-card-front{
-    background-color: #ffffff;
     border: solid;
     border-radius: 10px;
-    border-color: #ae0001;
-    border-width: thick;
+    /* border-color: #03a696;
+    border-width: thick; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    box-sizing: border-box;
+    
+}
+
+.flip-card-back{
+    background-color: #ffffff;
+    transform: rotateY(180deg);
+    border: solid;
+    /* border-radius: 10px;
+    border-color: #03a696;
+    border-width: thick; */
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -154,14 +207,17 @@ textarea{
 
 .front-title{
     box-sizing: border-box;
+    display: flex;
     width: 100%;
-    border-bottom: #ae0001 solid thick;
+    border-bottom: #bb2e4b solid thin;
     height: 10%;
+    align-items: center;
+    justify-content: center;
 }
 .front-left{
     box-sizing: border-box;
     width: 30%;
-    border-right: #ae0001 solid thick;
+    border-right: #bb2e4b solid thin;
     height: 90%;
 }
 .front-right{
@@ -172,27 +228,41 @@ textarea{
 .back-title{
     box-sizing: border-box;
     width: 100%;
-    border-bottom: #125430 solid thick;
+    border-bottom: #bb2e4b solid thin;
     height: 10%;
     display: flex;
+    align-items: center;
 }
+#back-title{
+    display: flex;
+    align-items: center;
+}
+
 .back-left{
     box-sizing: border-box;
     width: 30%;
-    border-right: #125430 solid thick;
+    border-right: #bb2e4b solid thin;
     height: 80%;
+    padding: 10px;
+    text-align: left;
+    overflow-y: scroll;
 }
 .back-right{
     box-sizing: border-box;
     width: 70%;
+    padding: 10px;
+    text-align: left; 
+    height: 80%;
+    overflow-y: scroll;
 }
 .back-bottom{
     box-sizing: border-box;
     width: 100%;
     height: 10%;
-    border-top: #125430 solid thick;
+    border-top: #bb2e4b solid thin;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .back-top-spacer{
@@ -205,65 +275,13 @@ textarea{
     height: 100%;
 }
 
-.flip-card-back{
-    background-color: #ffffff;
-    transform: rotateY(180deg);
-    border: solid;
-    border-radius: 10px;
-    border-color: #125430;
-    border-width: thick;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    box-sizing: border-box;
-}
 
-#main-section {
-    box-sizing: border-box;
-    display: flex;
-    /* border: solid; */
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-}
-
-#left-nav-card {
-    display: flex;
-    width: 20%;
-    margin-left: 15px;
-    box-sizing: border-box;
-    padding: 15px;
-    flex-direction: column;
-    
-}
-
-#main-card-container {
-    display: flex;
-    width: 20%;
-    justify-content: center;
-}
-
-#main-card{
-    width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-    
-}
-
-#main-card-title{
-    box-sizing: border-box;
-    width: 100%;
-    height: 10%;
-    border-bottom: #ae0001 solid thick;
-    text-align: center;
-    padding: 15px;
-}
 
 #ingredient-section{
     box-sizing: border-box;
     width: 20%;
     padding: 15px;
-    border-right: #ae0001 solid thick;
+    border-right: #03a696 solid thick;
     height: 90%;
 
 }
@@ -276,22 +294,25 @@ textarea{
 
 
 .red-border{
-    border: solid;
-    border-radius: 10px;
-    border-color: #ae0001;
-    border-width: thick;
+    /* border: solid; */
+    border-radius: 15px;
+    /* border-color: #03a696; */
+    border-width: 7px;
+    box-shadow: 1px 1px 15px;
+
 }
 
 .black-border{
     border: solid;
     border-radius: 10px;
-    border-color: black;
+    border-color: transparent;
     border-width: thick;
 }
 
 .green-border{
-    border: solid;
+    /* border: solid;
     border-radius: 10px;
-    border-color: #125430;
-    border-width: thick;
+    border-color: #03a696;
+    border-width: thick; */
 }
+
