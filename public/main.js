@@ -9,6 +9,8 @@ const backExitButton = document.getElementById('back-exit-button')
 const flipCardInner = document.querySelector('.flip-card-inner')
 const frontRecipeListSection = document.getElementById('front-recipe-list-section')
 const addRecipeButton = document.getElementById('add-recipe-button')
+const flipCardFront = document.querySelector('.flip-card-front')
+const flipCardBack = document.querySelector('.flip-card-back')
 
 const ingredientSection = document.getElementById('back-ingredients')
 const mainCardTitle = document.getElementById('back-title')
@@ -33,12 +35,12 @@ const deleteRecipe = (recipe_id) =>{
 
 const editRecipe = (recipe_id, recipe_title, ingredients, instructions ) => {
 // const editRecipe = (recipe_id, recipe_title, ingredients, instructions ) => {
+    // console.log('received stringified: ', recipeStringify)
     flipCard360()
     editButtonSection.innerHTML = ''
     deleteButtonSection.innerHTML = ''
     submitRecipeSection.innerHTML = '<button id="make-changes-button">Make Changes</button>'
     const makeChangesButton = document.getElementById('make-changes-button')
-
 
     mainCardTitle.innerHTML = `<input type="text" id="edited-title" value="${recipe_title}" required>`
     ingredientSection.innerHTML =`<textarea id="edited-ingredients">${ingredients}</textarea required>`
@@ -58,15 +60,16 @@ const displayRecipe = (recipe) =>{
     flipCard()
     let {recipe_id, recipe_title, ingredients, instructions } = recipe
     console.log(recipe_title, ingredients, instructions)
-    console.log('This is my recipe', recipe)
-    editButtonSection.innerHTML = `<button onclick="editRecipe('${recipe_id}', '${recipe_title}', '${ingredients}', '${instructions}')">Edit Recipe</button>`
+    let strippedIngredients = ingredients.replace(/[\n\r]/g, '<br>')
+    let strippedInstructions = instructions.replace(/[\n\r]/g, '<br>')
+    editButtonSection.innerHTML = `<button onclick="editRecipe('${recipe_id}', '${recipe_title}', '${strippedIngredients}', '${strippedInstructions}')">Edit Recipe</button>`
     deleteButtonSection.innerHTML = `<button onclick="deleteRecipe('${recipe_id}')">Delete Recipe</button>`
-    ingredients = ingredients.split(';').join(`<br>`)
-    instructions = instructions.split(';').join(`<br>`)
     
+    spacedIngredients = ingredients.replace(/[\n\r]/g, '<br><br>')
+    spacedInstructions = instructions.replace(/[\n\r]/g, '<br><br>')
     mainCardTitle.innerHTML = `<p>${recipe_title}</p>`
-    ingredientSection.innerHTML = `<p>${ingredients}</p>`
-    instructionSection.innerHTML = `<p>${instructions}</p>`
+    ingredientSection.innerHTML = `<p>${spacedIngredients}</p>`
+    instructionSection.innerHTML = `<p>${spacedInstructions}</p>`
     
 }
 
@@ -75,6 +78,7 @@ const createTitleButton = (arr) => {
     console.log('running create title button', arr)
     for(let i = 0; i < arr.length; i++){
         const recipeTitleButton = document.createElement('button')
+        recipeTitleButton.setAttribute("class", "recipe-title-button")
         recipeTitleButton.textContent = `${arr[i].recipe_title}`
         recipeTitleButton.addEventListener('click', () => displayRecipe(arr[i]))
         frontRecipeListSection.appendChild(recipeTitleButton)
@@ -93,9 +97,12 @@ const displayInputField = () => {
     const submitRecipeButton = document.getElementById('submit-recipe-button')
 
     submitRecipeButton.addEventListener('click', ()=> {
-        const inputTitle = document.getElementById('title-input').value
-        const inputIngredients = document.getElementById('ingredient-textarea').value
-        const inputInstructions = document.getElementById('instruction-textarea').value
+        let inputTitle = document.getElementById('title-input').value
+        let inputIngredients = document.getElementById('ingredient-textarea').value
+        let inputInstructions = document.getElementById('instruction-textarea').value
+        inputTitle = inputTitle.replace(/[']/g, `''`)
+        inputIngredients = inputIngredients.replace(/[']/g, `''`)
+        inputInstructions = inputInstructions.replace(/[']/g, `''`)
         console.log(inputTitle, inputIngredients, inputInstructions)
         const newRecipe = {title: inputTitle, ingredients: inputIngredients, instructions: inputInstructions}
 
@@ -139,8 +146,7 @@ const fetchRecipes = ()=>{
 
 }
 
-
-getRecipeButton.addEventListener('click', fetchRecipes)
+window.onload = fetchRecipes()
 backExitButton.addEventListener('click', flipCard)
 addRecipeButton.addEventListener('click', displayInputField)
 
@@ -151,6 +157,10 @@ function flipCard(){
     deleteButtonSection.innerHTML = ``
     submitRecipeSection.innerHTML = ``
     flipCardInner.classList.remove("flip360")
+    // flipCardFront.setAttribute("z-index", 0)
+    // flipCardBack.setAttribute("z-index", 1)
+    console.log(flipCardFront)
+    console.log(flipCardBack)
 }
 function flipCard360(){
     flipCardInner.classList.toggle("flip360")
