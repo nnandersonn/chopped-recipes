@@ -34,8 +34,6 @@ const deleteRecipe = (recipe_id) =>{
 }
 
 const editRecipe = (recipe_id, recipe_title, ingredients, instructions ) => {
-// const editRecipe = (recipe_id, recipe_title, ingredients, instructions ) => {
-    // console.log('received stringified: ', recipeStringify)
     flipCard360()
     editButtonSection.innerHTML = ''
     deleteButtonSection.innerHTML = ''
