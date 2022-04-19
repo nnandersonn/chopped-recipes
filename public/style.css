@@ -49,8 +49,8 @@ h1 {
 
 body {
     box-sizing: border-box;
-    width: 98vw;
-    height: 98vh;
+    width: 100vw;
+    height: 100vh;
     padding: 0px; 
     margin: 0px;
     font-family: 'Cutive Mono', monospace;
@@ -237,17 +237,6 @@ textarea, input{
    
 }
 
-/* #front-recipe-list-section{
-    height: 100%;
-    box-sizing: border-box;
-    
-    isolation: isolate;
-    overflow-y: scroll;
-    -webkit-overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    z-index:0;
-} */
-
 .recipe-title-button{
     margin: 10px;
     width: auto;
@@ -298,7 +287,19 @@ textarea, input{
 .back-top-spacer{
     width: 15%;
     height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+#back-exit-button{
+    font-size: xx-large;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
 
 .back-title-div{
     width: 70%;
